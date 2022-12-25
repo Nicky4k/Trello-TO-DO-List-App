@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 
-const ToDo = ({ todo, deleteItemHook, updateItemHook, dragId }) => {
+const ToDo = ({ todo, deleteItemHook, updateItemHook, setDND }) => {
   const [showModal, setShowModal] = useState(false);
 
   const editToDoHandler = () => {
@@ -12,11 +12,11 @@ const ToDo = ({ todo, deleteItemHook, updateItemHook, dragId }) => {
     deleteItemHook(todo.id);
   };
 
-  const dragStarthandler = (e) => {};
-
-  const dragEndHandler = (e) => {
-    console.log(dragId);
+  const dragStarthandler = (e) => {
+    setDND(todo.id);
   };
+
+  const dragEndHandler = (e) => {};
 
   const toggleModal = () => {
     setShowModal(false);

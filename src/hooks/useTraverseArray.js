@@ -1,3 +1,5 @@
+let dndId;
+
 const traverseArray = function () {
   const deleteItem = (tree, id) => {
     const updatedArr = tree.filter((el) => el.id !== id);
@@ -23,7 +25,19 @@ const traverseArray = function () {
     return [...tree, node];
   };
 
-  return { deleteItem, updateItem, addItem };
+  const dndify = (tree, newStatus) => {
+    let updatedArr = tree.map((el) => {
+      if (el.id === dndId) el.status = newStatus;
+      return el;
+    });
+    return updatedArr;
+  };
+
+  const setDnD = (id) => {
+    dndId = id;
+  };
+
+  return { deleteItem, updateItem, addItem, setDnD, dndify };
 };
 
 export default traverseArray;

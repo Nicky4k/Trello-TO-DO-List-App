@@ -8,12 +8,13 @@ const Container = ({
   deleteItemHook,
   updateItemHook,
   addItemHook,
+  setDND,
+  dndifyHook,
 }) => {
   const [showModal, setShowModal] = useState(false);
-  const [dragId, setDragId] = useState();
 
   const dragEnterHandler = (e) => {
-    setDragId(e.currentTarget.id);
+    dndifyHook(e.currentTarget.id);
   };
 
   const toggleModal = () => {
@@ -24,7 +25,6 @@ const Container = ({
     <div
       id={statusType}
       onDragEnter={dragEnterHandler}
-      draggable="true"
       className="Container__todos"
     >
       <div className={statusType}>
@@ -40,7 +40,7 @@ const Container = ({
           if (todo.status === statusType) {
             return (
               <ToDo
-                dragId={dragId}
+                setDND={setDND}
                 updateItemHook={updateItemHook}
                 deleteItemHook={deleteItemHook}
                 key={todo.id}

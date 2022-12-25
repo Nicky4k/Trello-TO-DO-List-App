@@ -8,7 +8,7 @@ import traverseArray from "./hooks/useTraverseArray";
 function App() {
   const [todos, setTodos] = useState(allLists);
 
-  const { deleteItem, updateItem, addItem } = traverseArray();
+  const { deleteItem, updateItem, addItem, setDnD, dndify } = traverseArray();
 
   const deleteItemHook = (id) => {
     const updatedArray = deleteItem(todos, id);
@@ -22,6 +22,13 @@ function App() {
     const updatedArray = addItem(todos, title);
     setTodos(updatedArray);
   };
+  const setDND = (id) => {
+    setDnD(id);
+  };
+  const dndifyHook = (newStatus) => {
+    const updatedArr = dndify(todos, newStatus);
+    setTodos(updatedArr);
+  };
 
   return (
     <div className="App not__selectable">
@@ -31,21 +38,27 @@ function App() {
           deleteItemHook={deleteItemHook}
           updateItemHook={updateItemHook}
           addItemHook={addItemHook}
+          setDND={setDND}
           todos={todos}
+          dndifyHook={dndifyHook}
           statusType={"new"}
         />
         <Container
           deleteItemHook={deleteItemHook}
           updateItemHook={updateItemHook}
           addItemHook={addItemHook}
+          setDND={setDND}
           todos={todos}
+          dndifyHook={dndifyHook}
           statusType={"wip"}
         />
         <Container
           deleteItemHook={deleteItemHook}
           updateItemHook={updateItemHook}
           addItemHook={addItemHook}
+          setDND={setDND}
           todos={todos}
+          dndifyHook={dndifyHook}
           statusType={"done"}
         />
       </div>
