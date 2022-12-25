@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --border--radius: 2rem;
+}
+
+/* fix 100vh on mobile browsers */
+
+.App {
+  position: fixed;
+  height: 100vh;
+  height: -webkit-fill-available;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "Inter", sans-serif;
+  padding: 1rem;
+  background-color: #d9afd9;
+  background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 5rem;
+}
+
+.not__selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.dnd__mainLogo {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+}
+
+.container__box {
+  display: flex;
+}
+
+.Container__todos {
+  position: relative;
+  width: 30vw;
+  height: 70vh;
+  margin: 1rem 1rem;
+  background-color: rgba(255, 255, 255, 0.48);
+  border-radius: 0.5rem;
+}
+
+.totodContainer {
+  height: calc(100% - 3.25rem);
+  overflow-y: scroll;
+}
+
+.totodContainer {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.totodContainer::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.todo__strip {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: auto;
+  height: 6rem;
+  margin: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #ffffff;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.upper_half {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.lower_half {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tools__todo {
+  display: flex;
+  gap: 1rem;
+}
+
+.tools__item {
+  cursor: pointer;
+}
+
+.tools__item:hover {
+  transform: scale(1.1);
+}
+
+.new {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  height: 2.75rem;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+}
+
+.wip {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  height: 2.75rem;
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+}
+
+.done {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  height: 2.75rem;
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+}
+
+.Container__todos > h3 {
+  color: rgb(45, 45, 45);
+}
+
+.add__todos {
+  padding: 0.25rem 0.45rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  transition: all 100ms linear;
+}
+
+.add__todos:hover {
+  background-color: white;
+  cursor: pointer;
+}
+.add__todos:active {
+  transform: scale(1.1);
+}
+
+.modal__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  cursor: auto;
+  transition: all 50ms ease-in;
+}
+
+.modal__Box {
+  height: 15rem;
+  width: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background-color: white;
+  box-shadow: 0px 1.5px 18.1px rgba(0, 0, 0, 0.101),
+    0px 2.9px 27.3px rgba(0, 0, 0, 0.115), 0px 5.1px 38.1px rgba(0, 0, 0, 0.134);
+}
+
+.input_modal-container {
+  height: 2rem;
+  margin-right: 1rem;
+  padding: 0 1rem;
+  outline: none;
+  border: none;
+  background-color: rgb(234, 234, 234);
+  border-radius: 0.5rem;
+}
+
+.submit__btnTodo {
+  height: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: #85ffbd;
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.submit__btnTodo:hover {
+  transform: scale(1.05);
+  transition: all 50ms ease-in;
+}
+
+.upper_half > h3 {
+  font-weight: 500;
+}
+
+h4,
+h5 {
+  color: rgb(72, 64, 103);
+  font-weight: 400;
+}
